@@ -66,7 +66,7 @@ const UserPost = ({ postImg, postTitle, likes, replies }) => {
                 borderRadius={10}
                 overflow={"hidden"}
                 border={"1px solid"}
-                borderColor={"gray.light"}
+                borderColor= {"rgba(0,0,0,0.4)"}
               >
                 <Image src={postImg} w={"full"} />
               </Box>

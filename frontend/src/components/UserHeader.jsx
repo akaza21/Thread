@@ -44,7 +44,7 @@ const UserHeader = () => {
             <Text
               fontSize={"xs"}
               bg={"gray.dark"}
-              color={"gray.light"}
+              color={"gray"}
               p={1}
               borderRadius={"full"}
             >
