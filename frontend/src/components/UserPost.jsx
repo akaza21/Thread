@@ -1,12 +1,13 @@
 import { Box, Flex, Text } from "@chakra-ui/layout";
 import { Avatar } from "@chakra-ui/avatar";
 import { Link } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import { BsThreeDots } from "react-icons/bs";
 import { Image } from "@chakra-ui/react";
+import Actions from "./Actions";
 
-
-const UserPost = () => {
+const UserPost = ({ postImg, postTitle, likes, replies }) => {
+  const [liked, setLiked] = useState(false);
   return (
     <div>
       <Link to={"/markzuckerberg/post/1"}>
@@ -21,7 +22,7 @@ const UserPost = () => {
                 src="https://bit.ly/dan-abramov"
                 position={"absolute"}
                 top={"0px"}
-                left="15px"
+                left="12px"
                 padding={"2px"}
               />
               <Avatar
@@ -30,7 +31,7 @@ const UserPost = () => {
                 src="https://bit.ly/sage-adebayo"
                 position={"absolute"}
                 bottom={"0px"}
-                right="-5px"
+                right="-1px"
                 padding={"2px"}
               />
               <Avatar
@@ -39,7 +40,7 @@ const UserPost = () => {
                 src="https://bit.ly/prosper-baba"
                 position={"absolute"}
                 bottom={"0px"}
-                left="4px"
+                left="-1px"
                 padding={"2px"}
               />
             </Box>
@@ -59,17 +60,34 @@ const UserPost = () => {
                 <BsThreeDots />
               </Flex>
             </Flex>
-            <Text fontSize={"sm"}>This is my first post</Text>
-            
+            <Text fontSize={"sm"}>{postTitle}</Text>
+            {postImg && (
               <Box
-                borderRadius={6}
+                borderRadius={10}
                 overflow={"hidden"}
                 border={"1px solid"}
                 borderColor={"gray.light"}
               >
-                <Image src='/post1.png' w={"full"} />
+                <Image src={postImg} w={"full"} />
               </Box>
-      
+            )}
+            <Flex gap={3} my={1}>
+              <Actions liked={liked} setLiked={setLiked} />
+            </Flex>
+            <Flex gap={2} alignItems={"center"}>
+              <Text color={"gray.light"} fontSize="sml">
+                {replies} replies
+              </Text>
+              <Box
+                w={0.5}
+                h={0.5}
+                borderRadius={"full"}
+                bg={"gray.light"}
+              ></Box>
+              <Text color={"gray.light"} fontSize="sm">
+                {likes} likes
+              </Text>
+            </Flex>
           </Flex>
         </Flex>
       </Link>
